@@ -5,12 +5,12 @@ import styles from './Footer.scss';
 const Footer = () => (
   <footer className={styles.footer}>
     <p>
-      Made by <a href="https://github.com/makezi">Marko Djordjevic</a>
+      Check my <a href="https://github.com/florengo">GitHub</a> or my <a href="https://www.linkedin.com/in/florencia-guadalupe-gonzalez/">
+        <FontAwesome className={styles.icon} name="github" /> Linkedin
+      </a>
     </p>
     <p>
-      <a href="https://github.com/Makezi/react-moviedb">
-        <FontAwesome className={styles.icon} name="github" /> View code
-      </a>
+      
     </p>
   </footer>
 );

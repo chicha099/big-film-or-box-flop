@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Poster from '../../components/Poster/';
 import Spinner from '../Spinner';
 import NotFound from '../NotFound';
@@ -6,11 +6,17 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { BASE_API_IMG_URL } from '../../constants/api';
 import styles from './MovieInfo.scss';
+import movieTrailer from 'movie-trailer';
+import ReactPlayer from 'react-player';
+
 
 class MovieInfo extends Component {
   constructor(props) {
     super(props);
     this.renderBackground = this.renderBackground.bind(this);
+    this.state = {
+      movieLink: ''
+    }
   }
 
   componentWillMount() {
@@ -42,6 +48,7 @@ class MovieInfo extends Component {
 
   render() {
     const { isLoading, hasErrored, movie } = this.props;
+
     if (hasErrored) {
       return (
         <div className={styles.error}>
@@ -56,6 +63,16 @@ class MovieInfo extends Component {
         </div>
       );
     }
+
+    const handleMovieLink = () => {
+      movieTrailer(movie.title)
+        .then((res) => {
+          this.setState({
+            movieLink: res
+          })
+        })
+    }
+
     return (
       <div className={styles.movieContainer}>
         <div className={styles.poster}>
@@ -108,11 +125,15 @@ class MovieInfo extends Component {
               <div className={styles.genres}>
                 {movie.genres
                   ? movie.genres.map(genre => (
-                      <span key={genre.id}>{genre.name}</span>
-                    ))
+                    <span key={genre.id}>{genre.name}</span>
+                  ))
                   : 'N/A'}
               </div>
             </div>
+          </div>
+          <div className={styles.trailerDiv}>
+            <p onClick={handleMovieLink()}></p>
+            <ReactPlayer url={this.state.movieLink} controls={true} />
           </div>
         </div>
       </div>

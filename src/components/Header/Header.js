@@ -9,9 +9,9 @@ const Header = () => (
       <div className={styles.logo}>
         <Link to="/react-moviedb/">
           <img
-            src="https://www.themoviedb.org/static_cache/v4/logos/powered-by-rectangle-green-dcada16968ed648d5eb3b36bbcfdd8cdf804f723dcca775c8f2bf4cea025aad6.svg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Tmdb.new.logo.svg/1280px-Tmdb.new.logo.svg.png"
             alt="Movie DB Logo"
-            width="250px"
+            width="100px"
           />
         </Link>
       </div>

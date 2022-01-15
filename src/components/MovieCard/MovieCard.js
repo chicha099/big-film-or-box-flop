@@ -15,6 +15,7 @@ const MovieCard = ({ movie }) => (
       <span className={styles.title}>
         {`${movie.title} (${moment(movie.release_date).format('YYYY') ||
           null})`}
+        
       </span>
     </div>
   </Link>
